@@ -8,7 +8,6 @@ import time
 saveDirectory=None
 imageWidth=None
 
-
 def readConfig():
     global saveDirectory,imageWidth;
     #cf = ConfigParser.ConfigParser()
@@ -21,7 +20,6 @@ def readConfig():
     imageWidth=cf.get("conf","imageWidth")
     print(u"下载保存路径为："+saveDirectory)
     print(u"下载图片宽段为："+imageWidth)
-
 
 #文件夹是否存在 不存在则新建
 def createDir(path):
