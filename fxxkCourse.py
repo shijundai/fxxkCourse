@@ -42,12 +42,12 @@ def writeBinaryFile(path,fileName,content):
 
 #登录状态监测
 def check_login(imageId=None,s=None):
-    print("登录检测中....")
+    print(u"登录检测中....")
     statusCheckUrl = 'https://www.fxiaoke.com/FHH/EM0HXUL/Authorize/GetQRImageStatus';
     data={"{\"ImageID\":\""+imageId+"\"}":""}
     r = s.post(statusCheckUrl, data=data).json()
     if r['Value']['Status']==2:
-        print("登录二维码已失效，请重新启动")
+        print(u"登录二维码已失效，请重新启动")
         os._exit();
     return r['Value']['Status']!=1;
 
@@ -70,7 +70,7 @@ def openQrImage():
 def login():
     s,imageId=openQrImage()
     isNotLogin = True;
-    print("请扫描二维码登录")
+    print(u"请扫描二维码登录")
     while isNotLogin:
         isNotLogin = check_login(imageId=imageId,s=s);
     downAndSaveAllCourses(s);
@@ -141,7 +141,7 @@ def downCourse(s,c,learnUrl):
 
 #下载所有课程
 def downAndSaveAllCourses(s):
-    print("登录成功，开始下载......")
+    print(u"登录成功，开始下载......")
     s.keep_alive = False;
     traceId, fsToken=getTraceAndToken(s)
     learnUrl = "https://www.fxiaoke.com/FHH/EM1HFsTrain/course/learn?traceId=" + traceId + "&_fs_token=" + fsToken
